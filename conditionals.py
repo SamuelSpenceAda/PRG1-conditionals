@@ -1,18 +1,54 @@
+def check_voting_eligibility(age, is_citizen):
+    """Return if person can vote (18+, citizen)"""
+    if age >= 18 and is_citizen:
+        return "You are eligible to vote."
+    elif age >= 18:
+        return "You are old enough, but not a citizen, so cannot vote."
+    elif is_citizen:
+        return "Come back when you're 18!"
+    else:
+        return "Ineligible to vote. Too young and not a citizen."
+
+def check_voting_eligibility(age, citizenship):
+    """Return if person can vote (18+, citizen)"""
+    if age >= 18:
+        match citizenship:
+            case True:
+                return "You are eligible to vote."
+            case False:
+                return "You're old enough, but not a citizen."      
+    else:
+        match citizenship:
+            case True:
+                return "You're too young, silly!"
+            case False:
+                return "You're ineligible to vote."
+
 def check_temperature(temp):
     """Simple if/else - good for beginners to read and understand"""
-    if temp > 25:
-        return "It's warm today!"
-    else:
-        return "It's cool today!"
+    try:
+        temp = int(temp)
+        if temp > 25:
+            return "It's warm today!"
+        else:
+            return "It's cool today!"
+
+
+
+    except:
+        return "Error: incorrect input"
+    
 
 
 def grade_assignment(score):
-    if score >= 90:
-        return "Excellent work!"
-    elif score >= 70:
-        return "Good job!"
+    if score >= 97:
+        return "Grade A+"
+    elif score >= 85:
+        return "Grade A"
+    elif score >= 75:
+        return "Grade B"
     elif score >= 50:
-        return "You passed!"
+        return "Grade C"
     else:
         return "Please try again"
 
@@ -312,7 +348,13 @@ def run_match_examples():
 
 if __name__ == "__main__":
     # Comment back in the later examples to run 
-    run_beginner_examples()
+    # run_beginner_examples()
     # run_intermediate_examples()
     # run_advanced_examples()
     # run_match_examples()
+
+    # print(grade_assignment(10))
+
+    # print(check_temperature("100"))
+
+    print(check_voting_eligibility(1, False))
